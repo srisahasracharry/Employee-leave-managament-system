@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Login</title>
+	<style>
+		* {
+			margin: 0px;
+			padding: 0px;
+		}
+
+		body {
+			height: 80vh;
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: space-evenly;
+		}
+
+		form {
+			height: 350px;
+			width: 500px;
+			background-color: burlywood;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: space-evenly;
+			border-radius: 10px;
+		}
+
+		label {
+			font-size: 20px;
+		}
+
+		input {
+			height: 20px;
+			width: 300px;
+			font-size: 20px;
+			padding: 10px;
+			border: none;
+			outline: none;
+			border-radius: 5px;
+		}
+
+		button {
+			height: 40px;
+			width: 150px;
+			font-size: 25px;
+			border: none;
+			outline: none;
+			border-radius: 5px;
+			font-weight: bold;
+		}
+
+		h1 {
+			font-size: 50px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Login</h1>
+	<form th:action="@{/login}" method="post">
+		<label for="username">Username:</label>
+		<input type="text" id="username" name="username" />
+		<label for="password">Password:</label>
+		<input type="password" id="password" name="password" />
+		<button type="submit">Login</button>
+		<p th:if="${error}" th:text="${error}"></p>
+	</form>
+</body>
+
+</html>

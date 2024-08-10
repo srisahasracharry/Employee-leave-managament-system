@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Leave Request Details</title>
+    <style>
+		* {
+			margin: 0px;
+			padding: 0px;
+		}
+
+		body {
+			height: 80vh;
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: space-evenly;
+            background-color: rgba(193, 151, 95, 0.381);
+		}
+
+        div{
+            height: 200px;
+            width: 300px;
+            display: flex;
+			flex-direction: column;
+			justify-content: space-evenly;
+            font-size: 20px;
+        }
+		
+		input {
+			height: 20px;
+			width: 300px;
+			font-size: 20px;
+			padding: 10px;
+			border: none;
+			outline: none;
+			border-radius: 5px;
+		}
+
+		button {
+			height: 40px;
+			width: 150px;
+			font-size: 25px;
+			border: none;
+			outline: none;
+			border-radius: 5px;
+			font-weight: bold;
+		}
+
+		h1 {
+			font-size: 50px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Leave Request Details</h1>
+	<div>
+		<p><strong>Employee:</strong> <span th:text="${leaveRequest.employee.name}"></span></p>
+		<p><strong>Start Date:</strong> <span th:text="${leaveRequest.startDate}"></span></p>
+		<p><strong>End Date:</strong> <span th:text="${leaveRequest.endDate}"></span></p>
+		<p><strong>Status:</strong> <span th:text="${leaveRequest.status}"></span></p>
+	</div>
+
+	<h2>Actions</h2>
+	<form th:action="@{/leaves/approve}" method="post">
+		<input type="hidden" name="requestId" th:value="${leaveRequest.id}" />
+		<button type="submit" th:if="${currentUser.role == 'MANAGER'}">Approve</button>
+	</form>
+
+	<form th:action="@{/leaves/reject}" method="post">
+		<input type="hidden" name="requestId" th:value="${leaveRequest.id}" />
+		<button type="submit" th:if="${currentUser.role == 'MANAGER'}">Reject</button>
+	</form>
+
+	<a href="/leaves">Back to List</a>
+</body>
+
+</html>

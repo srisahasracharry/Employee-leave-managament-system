@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Request Leave</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        body {
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+        }
+
+        form {
+            height: 450px;
+            width: 500px;
+            background-color: burlywood;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+            border-radius: 10px;
+        }
+
+        label {
+            font-size: 20px;
+        }
+
+        input {
+            height: 20px;
+            width: 300px;
+            font-size: 20px;
+            padding: 10px;
+            border: none;
+            outline: none;
+            border-radius: 5px;
+        }
+
+        button {
+            height: 40px;
+            width: 150px;
+            font-size: 25px;
+            border: none;
+            outline: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        h1 {
+            font-size: 50px;
+        }
+        a{
+            text-decoration: none;
+    
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Request Leave</h1>
+    <form th:action="@{/leaves/request}" method="post">
+        <label for="startDate">Start Date:</label>
+        <input type="date" id="startDate" name="startDate" required />
+
+        <label for="endDate">End Date:</label>
+        <input type="date" id="endDate" name="endDate" required />
+
+        <button type="submit">Submit</button>
+
+        <a href="/leaves">Back to List</a>
+    </form>
+    
+</body>
+
+</html>
